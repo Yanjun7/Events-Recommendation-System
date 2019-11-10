@@ -51,7 +51,7 @@ public class ItemHistory extends HttpServlet {
 
 		
 		
-		String userId = request.getParameter("user_id");
+//		String userId = request.getParameter("user_id");
 		JSONArray array = new JSONArray();
 		
 		DBConnection conn = DBConnectionFactory.getConnection();
@@ -76,15 +76,7 @@ public class ItemHistory extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// allow access only if session exists
-		HttpSession session = request.getSession(false);
-		if (session == null) {
-			response.setStatus(403);
-			return;
-		}
 
-		// optional
-		String userId = session.getAttribute("user_id").toString();  
 		
 		DBConnection connection = DBConnectionFactory.getConnection();
 	  	 try {
@@ -117,9 +109,6 @@ public class ItemHistory extends HttpServlet {
 			response.setStatus(403);
 			return;
 		}
-
-		// optional
-		String userId = session.getAttribute("user_id").toString();  
 		
 		
 		DBConnection connection = DBConnectionFactory.getConnection();
